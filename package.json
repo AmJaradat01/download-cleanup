@@ -1,0 +1,49 @@
+{
+  "name": "download-cleanup",
+  "version": "1.0.0",
+  "description": "Cross-platform Node.js tool to organize and clean up downloads based on metadata, with configurable rules for moving or removing files.",
+  "main": "download-cleanup.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmJaradat01/download-cleanup.git"
+  },
+  "keywords": [
+    "download",
+    "manager",
+    "file",
+    "cleanup",
+    "metadata",
+    "file",
+    "organizer",
+    "Node.js",
+    "cross-platform",
+    "automated",
+    "cleanup",
+    "file",
+    "mover",
+    "file",
+    "remover",
+    "configurable",
+    "rules",
+    "macOS",
+    "Windows",
+    "Linux",
+    "where",
+    "from",
+    "metadata",
+    "management",
+    "automation",
+    "tool",
+    "file",
+    "management",
+    "cleanup",
+    "script"
+  ],
+  "author": "Ali M. Jaradat <amjaradat01@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AmJaradat01/download-cleanup/issues"
+  },
+  "homepage": "https://github.com/AmJaradat01/download-cleanup#readme"
+}
