@@ -25,6 +25,21 @@ const getWhereFromMetadata = (filePath) => {
     return [];
 };
 
+const getFileAgeInMs = async (filePath) => {
+    const stats = await fs.stat(filePath);
+    return Date.now() - stats.mtimeMs;
+};
+
+const matchesCondition = async (filePath, condition) => {
+    if (condition.type === 'immediately') return true;
+
+    const { hours = 0, days = 0 } = condition.value || {};
+    const conditionMs = (hours * 3600 + days * 86400) * 1000;
+    const fileAge = await getFileAgeInMs(filePath);
+
+    return fileAge > conditionMs;
+};
+
 const processDownloads = async (sourceFolder = path.join(os.homedir(), 'Downloads')) => {
     const files = await fs.readdir(sourceFolder);
 
@@ -36,7 +51,9 @@ const processDownloads = async (sourceFolder = path.join(os.homedir(), 'Download
         const whereFromUrls = getWhereFromMetadata(filePath);
         for (const { website, action, targetFolder, condition } of config) {
             if (whereFromUrls.some((url) => url.includes(website))) {
-                if (action === 'move' && targetFolder) {
+                const matches = condition ? await matchesCondition(filePath, condition) : true;
+
+                if (matches && action === 'move' && targetFolder) {
                     await fs.mkdir(targetFolder, { recursive: true });
                     await fs.rename(filePath, path.join(targetFolder, fileName));
                     console.log(`Moved: ${fileName}`);
