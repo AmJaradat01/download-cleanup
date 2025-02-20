@@ -12,7 +12,7 @@
 1. Ensure you have Node.js installed. You can download it from [Node.js Official Website](https://nodejs.org/).
 2. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/download-cleanup.git
+   git clone https://github.com/AmJaradat01/download-cleanup.git
    cd download-cleanup
    ```
 3. Install dependencies:
